@@ -27,8 +27,12 @@ public record CompraRequest(
 
         @Valid @NotEmpty(message = "El carrito está vacío.") List<Item> items,
 
-        @Schema(description = "Solo para la demostración: fuerza el rechazo del pago", example = "false")
-        boolean simularRechazo) {
+        @Schema(description = "Opcional, solo para la demostración: fuerza el rechazo del pago", example = "false")
+        Boolean simularRechazo) {
+
+    public boolean debeSimularRechazo() {
+        return Boolean.TRUE.equals(simularRechazo);
+    }
 
     public record Cliente(
             @Schema(example = "Juan")

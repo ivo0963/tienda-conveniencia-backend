@@ -41,6 +41,7 @@ public class ManejadorErrores {
 
     @ExceptionHandler({HttpMessageNotReadableException.class, MethodArgumentTypeMismatchException.class})
     public ResponseEntity<ErrorRespuesta> formatoInvalido(Exception e, HttpServletRequest req) {
+        log.debug("Solicitud con formato inválido en {}: {}", req.getRequestURI(), e.getMessage());
         return respuesta(HttpStatus.BAD_REQUEST, "La solicitud tiene un formato o un valor no válido.", req, null);
     }
 

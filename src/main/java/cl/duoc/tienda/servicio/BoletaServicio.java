@@ -107,7 +107,7 @@ public class BoletaServicio {
         String motivoRechazo = null;
         if (!sinStock.isEmpty()) {
             motivoRechazo = "Stock insuficiente para: " + String.join(", ", sinStock) + ".";
-        } else if (datos.simularRechazo()) {
+        } else if (datos.debeSimularRechazo()) {
             motivoRechazo = "El medio de pago fue rechazado por el banco emisor.";
         }
 
